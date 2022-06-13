@@ -1,0 +1,22 @@
+{% extends 'stickies/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class="title">Welcome to Nathan's Stickies 📌</h1>
+    <p class="description">
+        I created this website to sync my sticky notes to the cloud. Every hour, my Mac mini runs <a href="{% static 'stickies/upload.txt' %}">an AppleScript script</a> which copies text from Stickies.app and uploads it to my server. When the script is run, all the old stickies are deleted.
+    </p>
+    <div class="stickies">
+        {% for sticky in object_list %}
+            {% if sticky.text and sticky.text.strip %}
+                <div class="sticky">{{ sticky.text|linebreaks }}</div>
+            {% endif %}
+        {% empty %}
+            <div class="sticky">No stickies to show.</div>
+        {% endfor %}
+    </div>
+    {% if object_list %}
+        <p>Last updated: {{ object_list.0.created_at|date:'M j, Y P T' }}</p>
+    {% endif %}
+    <p class="footer">&copy; 2022 Nathan Fredericks</p>
+{% endblock %}
