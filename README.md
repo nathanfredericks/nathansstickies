@@ -11,5 +11,5 @@ python manage.py migrate
 python manage.py runserver
 ```
 *AppleScript required to upload stickies is located in static directory.
-# Screenshots
+## Screenshots
 ![screenshot](https://github.com/nathanfredericks/nathansstickies/blob/main/screenshot.png?raw=true)
